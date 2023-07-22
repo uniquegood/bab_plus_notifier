@@ -46,3 +46,14 @@ exit
 
 free
 ```
+
+8. init_node.sh 실행. (뭔가 창이 뜨면 `q`를 눌러 나가기).
+
+```sh
+./init_node.sh
+
+#nvm --version 으로 설치 확인
+#npm --v 으로 설치 확인
+#node -v 으로 설치 확인
+#yarn -v 으로 설치 확인
+```
