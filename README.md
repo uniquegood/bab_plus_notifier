@@ -26,7 +26,7 @@ git clone https://github.com/KOREAparksh/bab_plus_notifier.git
 4. 권한 설정 및 init.sh 실행
 
 ```sh
-chmod 755 init.sh init2.sh init_swap_memory.sh init_node.sh
+chmod 755 init.sh init2.sh init_swap_memory.sh init_python.sh init_package.sh
 ./init.sh
 ```
 
@@ -45,4 +45,14 @@ exit
 ./init_swap_memory.sh
 
 free
+```
+
+8. init_python.sh와 init_package.sh를 순서대로 실행
+
+```sh
+./init_python.sh
+./init_package.sh
+
+# python3 --version 파이썬 실행 확인
+# pip3 --version pip3 확인
 ```
