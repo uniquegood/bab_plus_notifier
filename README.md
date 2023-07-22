@@ -26,7 +26,7 @@ git clone https://github.com/KOREAparksh/bab_plus_notifier.git
 4. 권한 설정 및 init.sh 실행
 
 ```sh
-chmod 755 init.sh init2.sh swap_memory_init.sh
+chmod 755 init.sh init2.sh init_swap_memory.sh init_node.sh
 ./init.sh
 ```
 
@@ -42,7 +42,7 @@ exit
 7. swap memory 설정 및 확인 `메모리 용량 설정은 스크립트 내에서 직접 설정할 것, 기본 2GB로 설정함`
 
 ```sh
-./swap_memory_init.sh
+./init_swap_memory.sh
 
 free
 ```
