@@ -2,7 +2,7 @@
 
 밥플러스 성수역V1타워점(1호점) 메뉴 안내 슬랫봇 프로그램
 
-### EC2 초기 설정 명령어 및 확인사항
+### EC2 생성 후 처음 해야 할 일
 
 1. 아래 명령어 실행
 
@@ -23,10 +23,18 @@ sudo systemctl status ufw
 git clone https://github.com/KOREAparksh/bab_plus_notifier.git
 ```
 
-4. 권한 설정 및 init.sh 실행 `꼭 sudo로 실행할 것.`
+4. 권한 설정 및 init.sh 실행
 
 ```sh
-chmod 755 init.sh
-sudo ./init.sh
-
+chmod 755 init.sh init2.sh
+./init.sh
 ```
+
+5. `exit` 명령어로 zsh 나온 후 init2.sh 실행
+
+```sh
+exit
+./init2.sh
+```
+
+6. ssh 접속 종료 후 재 접속

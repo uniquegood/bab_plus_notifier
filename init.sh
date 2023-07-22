@@ -16,7 +16,4 @@ sudo apt-get install -y curl zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
-sudo sed -i "s/plugins=(git)/plugins=(git zsh-autosuggestions)/g" $HOME/.zshrc
-source $HOME/.zshrc
-
 echo "=================================================ZSH END"
