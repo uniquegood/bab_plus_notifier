@@ -55,4 +55,3 @@ free
 
 # python3 --version 파이썬 실행 확인
 # pip3 --version pip3 확인
-```
