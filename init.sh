@@ -1,0 +1,22 @@
+#!/bin/bash
+
+echo "=================================================APT UPDATE START"
+sudo sed -i "s/http:\/\/security.ubuntu.com/https:\/\/mirror.kakao.com/g" /etc/apt/sources.list
+sudo sed -i "s/http:\/\/kr.archive.ubuntu.com/https:\/\/mirror.kakao.com/g" /etc/apt/sources.list
+sudo apt-get update
+sudo apt-get install -y net-tools
+
+echo "=================================================APT UPDATE END"
+
+
+
+echo "=================================================ZSH START"
+sudo apt-get install -y curl zsh
+
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+sudo sed -i "s/plugins=(git)/plugins=(git zsh-autosuggestions)/g" $HOME/.zshrc
+source $HOME/.zshrc
+
+echo "=================================================ZSH END"
