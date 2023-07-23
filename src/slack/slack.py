@@ -3,7 +3,7 @@ import datetime as dt
 from datetime import timedelta
 import os
 
-weekday = {
+weekdays = {
     0: "월요일",
     1: "화요일",
     2: "수요일",
@@ -15,8 +15,9 @@ weekday = {
 
 #낮에 보내는 당일 점심 
 def slackMessageLaunchFormat(imageUrl):
-    now = dt.datetime.now()
-    today = now.strftime("%y년 %m월 %d일 " + weekday[0])
+    today = dt.datetime.now()
+    weekday = today.weekday()
+    today = today.strftime("%y년 %m월 %d일 " + weekdays[weekday])
 
     title = "🤩  `" + today + "` 오늘의 점심 메뉴는???"
     return [
@@ -47,9 +48,12 @@ def slackMessageLaunchFormat(imageUrl):
 
 #밤에 보내는 당일 저녁과 다음날 점심 
 def slackMessageDinnerFormat(dinnerImageUrl, nextLaunchImageUrl):
-    now = dt.datetime.now()
-    today = now.strftime("%y년 %m월 %d일 " + weekday[0])
-    tomorrow = (now + timedelta(days=1)).strftime("%y년 %m월 %d일 " + weekday[0])
+    today = dt.datetime.now()
+    weekday = today.weekday()
+    tomorrow = today + timedelta(days=1)
+
+    today = today.strftime("%y년 %m월 %d일 " + weekdays[weekday])
+    tomorrow = tomorrow.strftime("%y년 %m월 %d일 " + weekdays[(weekday + 1) % 7])
 
     title = "`" + today + "` 오늘의 저녁 메뉴와\n`" + tomorrow + "` 내일 점심 메뉴는???"
     return [
