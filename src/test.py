@@ -45,6 +45,10 @@ def findCorrectDinnerImage(imageUrlList):
 ## 저녁 : 1
 
 if __name__ == "__main__":
+
+    # dotenv에서 url이랑 정보들 가져올 수 있게 함
+    load_dotenv(verbose=True)
+    
     # 매개변수 확인
     if len(sys.argv) != 2:
         slack.sendSlackErrorMessage("매개변수 문제로 프로그램이 종료되었습니다.")
@@ -57,8 +61,6 @@ if __name__ == "__main__":
         sys.exit()
     isLaunch = sys.argv[1] == '0'
 
-    # dotenv에서 url이랑 정보들 가져올 수 있게 함
-    load_dotenv(verbose=True)
 
     # 블로그에서 게시글 내 이미지들의 url을 가져옴
     imageUrlList = crawling.getImageUrls()

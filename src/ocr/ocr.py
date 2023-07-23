@@ -2,18 +2,25 @@ import os
 from dotenv import load_dotenv
 import pytesseract
 import cv2 
+import datetime as dt
 
 def getProcessedImage(url):
+    today = dt.datetime.today()
+    today = today.strftime("%m월%d일%H시%M분")
+
+    initFileName = "./image/init" + today + ".png"
+    cropFileName = "./image/crop" + today + ".png"
+    
     os.system("mkdir -p image")
-    os.system("curl " + url + " > ./image/test.png")
-    img = cv2.imread("./image/test.png")
+    os.system("curl " + url + " > " + initFileName)
+    img = cv2.imread(initFileName)
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     gray = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)[1]
     # gray = cv2.medianBlur(gray, 5)
-    cv2.imwrite('./image/grayImage.png',gray)
+    # cv2.imwrite('./image/grayImage.png',gray)
     cropGray = gray[80:190,180:770]
-    cv2.imwrite('./image/grayCropImage.png',cropGray)
-    os.system("rm -rf ./image")
+    cv2.imwrite(cropFileName,cropGray)
+    # os.system("rm -rf ./image")
     return cropGray
 
 def imageToString(image):

@@ -97,8 +97,8 @@ def slackMessageDinnerFormat(dinnerImageUrl, nextLaunchImageUrl):
 
 
 def slackErrorMessageFormat(msg):
-    now = dt.datetime.now()
-    today = now.strftime("%y년 %m월 %d일")
+    today = dt.datetime.now()
+    today = today.strftime("%y년 %m월 %d일")
 
     return [
         {
