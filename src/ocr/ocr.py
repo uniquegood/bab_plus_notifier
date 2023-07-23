@@ -13,7 +13,7 @@ def getProcessedImage(url):
     cv2.imwrite('./image/grayImage.png',gray)
     cropGray = gray[80:190,180:770]
     cv2.imwrite('./image/grayCropImage.png',cropGray)
-    # os.system("rm -rf ./image/test.png ./image/grayCropImage.png ./image/grayImage.png")
+    os.system("rm -rf ./image")
     return cropGray
 
 def imageToString(image):
