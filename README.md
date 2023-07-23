@@ -28,6 +28,7 @@ git clone https://github.com/KOREAparksh/bab_plus_notifier.git
 4. 권한 설정 및 init.sh 실행
 
 ```sh
+cd bab_plus_notifier
 chmod 755 init.sh init2.sh init_swap_memory.sh init_python.sh init_package.sh
 ./init.sh
 ```
