@@ -5,6 +5,7 @@ sudo sed -i "s/http:\/\/security.ubuntu.com/https:\/\/mirror.kakao.com/g" /etc/a
 sudo sed -i "s/http:\/\/kr.archive.ubuntu.com/https:\/\/mirror.kakao.com/g" /etc/apt/sources.list
 sudo apt-get update
 sudo apt-get install -y net-tools
+sudo apt-get install -y tesseract-ocr tesseract-ocr-script-hang tesseract-ocr-script-hang-vert
 
 echo "=================================================APT UPDATE END"
 
