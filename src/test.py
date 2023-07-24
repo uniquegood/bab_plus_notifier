@@ -51,12 +51,12 @@ if __name__ == "__main__":
     
     # 매개변수 확인
     if len(sys.argv) != 2:
-        slack.sendSlackErrorMessage("매개변수 문제로 프로그램이 종료되었습니다.")
+        slack.sendSlackErrorMessageTEST("매개변수 문제로 프로그램이 종료되었습니다.")
         print("매개변수 하나 지정해서 넣으소")
         sys.exit()
     menuTimeFlag = sys.argv[1]
     if (menuTimeFlag != '0' and menuTimeFlag != '1')  :
-        slack.sendSlackErrorMessage("매개변수 문제로 프로그램이 종료되었습니다.")
+        slack.sendSlackErrorMessageTEST("매개변수 문제로 프로그램이 종료되었습니다.")
         print("매개변수 0, 1 중에 넣으소")
         sys.exit()
     isLaunch = sys.argv[1] == '0'
@@ -65,7 +65,7 @@ if __name__ == "__main__":
     # 블로그에서 게시글 내 이미지들의 url을 가져옴
     imageUrlList = crawling.getImageUrls()
     if (imageUrlList == None):
-        slack.sendSlackErrorMessage("홈페이지에서 메뉴 이미지를 불러오지 못했습니다.")
+        slack.sendSlackErrorMessageTEST("홈페이지에서 메뉴 이미지를 불러오지 못했습니다.")
         print("조졌네이~")
         sys.exit()
     
@@ -80,13 +80,13 @@ if __name__ == "__main__":
     if isLaunch == True:
         url = findCorrectLaunchImage(imageUrlList)
         if (url == None):
-            slack.sendSlackErrorMessage("블로그에 올라온 이미지를 제대로 읽지 못했거나, 이미지가 올라와있지 않습니다.")
+            slack.sendSlackErrorMessageTEST("블로그에 올라온 이미지를 제대로 읽지 못했거나, 이미지가 올라와있지 않습니다.")
             sys.exit()
-        slack.sendSlackLaunchMessage(url)
+        slack.sendSlackLaunchMessageTEST(url)
     else:
         urlList = findCorrectDinnerImage(imageUrlList)
         if len(urlList) < 2: 
-            slack.sendSlackErrorMessage("블로그에 올라온 이미지를 제대로 읽지 못했거나, 이미지가 올라와있지 않습니다.")
+            slack.sendSlackErrorMessageTEST("블로그에 올라온 이미지를 제대로 읽지 못했거나, 이미지가 올라와있지 않습니다.")
             sys.exit()
-        slack.sendSlackDinnerMessage(urlList[0], urlList[1])
+        slack.sendSlackDinnerMessageTEST(urlList[0], urlList[1])
 
