@@ -20,7 +20,7 @@ def slackMessageLaunchFormat(imageUrl):
     weekday = today.weekday()
     today = today.strftime("%y년 %m월 %d일 " + weekdays[weekday])
 
-    title = "🤩  `" + today + "` 오늘의 점심 메뉴는???\n" + url
+    title = "🤩  `" + today + "` 오늘의 점심 메뉴는???\n메뉴블로그:\n" + url
     return [
         {
             "type": "section",
@@ -57,7 +57,7 @@ def slackMessageDinnerFormat(dinnerImageUrl, nextLaunchImageUrl):
     today = today.strftime("%y년 %m월 %d일 " + weekdays[weekday])
     tomorrow = tomorrow.strftime("%y년 %m월 %d일 " + weekdays[(weekday + 1) % 7])
 
-    title = "`" + today + "` 오늘의 저녁 메뉴와\n`" + tomorrow + "` 내일 점심 메뉴는???\n" + url
+    title = "`" + today + "` 오늘의 저녁 메뉴와\n`" + tomorrow + "` 내일 점심 메뉴는???\n메뉴블로그:\n" + url
     return [
         {
             "type": "section",
