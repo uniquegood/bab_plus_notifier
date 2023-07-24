@@ -15,11 +15,12 @@ weekdays = {
 
 #낮에 보내는 당일 점심 
 def slackMessageLaunchFormat(imageUrl):
+    url = os.getenv("CRAWLING_URL")
     today = dt.datetime.now()
     weekday = today.weekday()
     today = today.strftime("%y년 %m월 %d일 " + weekdays[weekday])
 
-    title = "🤩  `" + today + "` 오늘의 점심 메뉴는???"
+    title = "🤩  `" + today + "` 오늘의 점심 메뉴는???\n" + url
     return [
         {
             "type": "section",
@@ -48,6 +49,7 @@ def slackMessageLaunchFormat(imageUrl):
 
 #밤에 보내는 당일 저녁과 다음날 점심 
 def slackMessageDinnerFormat(dinnerImageUrl, nextLaunchImageUrl):
+    url = os.getenv("CRAWLING_URL")
     today = dt.datetime.now()
     weekday = today.weekday()
     tomorrow = today + timedelta(days=1)
@@ -55,7 +57,7 @@ def slackMessageDinnerFormat(dinnerImageUrl, nextLaunchImageUrl):
     today = today.strftime("%y년 %m월 %d일 " + weekdays[weekday])
     tomorrow = tomorrow.strftime("%y년 %m월 %d일 " + weekdays[(weekday + 1) % 7])
 
-    title = "`" + today + "` 오늘의 저녁 메뉴와\n`" + tomorrow + "` 내일 점심 메뉴는???"
+    title = "`" + today + "` 오늘의 저녁 메뉴와\n`" + tomorrow + "` 내일 점심 메뉴는???\n" + url
     return [
         {
             "type": "section",
