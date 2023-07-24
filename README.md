@@ -61,3 +61,12 @@ free
 ```
 
 9. `.env-sample`을 복제하여 `.env`파일 생성 및 내용 추가
+
+10. 서버 timezone 세팅
+
+11. 아래 명령어로 프로그램 실행
+```sh
+python3 src/main.py
+# or
+python3 src/test.py
+```
