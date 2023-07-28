@@ -61,6 +61,7 @@ if __name__ == "__main__":
 
     # 블로그에서 게시글 내 이미지들의 url을 가져옴
     imageUrlList = crawling.getImageUrls()
+    print(imageUrlList)
     if (imageUrlList == None):
         slack.sendSlackErrorMessage("홈페이지에서 메뉴 이미지를 불러오지 못했습니다.")
         print("조졌네이~")

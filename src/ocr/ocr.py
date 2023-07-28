@@ -6,11 +6,12 @@ import datetime as dt
 
 def getProcessedImage(url):
     today = dt.datetime.today()
-    today = today.strftime("%m월%d일%H시%M분")
+    today = today.strftime("%m월%d일%H시%M분%S초%f")
 
     initFileName = "./image/init" + today + ".png"
     cropFileName = "./image/crop" + today + ".png"
     
+    print(initFileName)
     os.system("mkdir -p image")
     os.system("curl " + url + " > " + initFileName)
     img = cv2.imread(initFileName)
