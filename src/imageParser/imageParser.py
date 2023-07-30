@@ -4,7 +4,8 @@ import pytesseract
 import cv2 
 import datetime as dt
 
-def getProcessedImage(url):
+
+def getCropedImage(url):
     today = dt.datetime.today()
     today = today.strftime("%m월%d일%H시%M분%S초%f")
 
@@ -19,13 +20,26 @@ def getProcessedImage(url):
     gray = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY | cv2.THRESH_OTSU)[1]
     # gray = cv2.medianBlur(gray, 5)
     # cv2.imwrite('./image/grayImage.png',gray)
-    cropGray = gray[80:190,180:770]
+    
+    cropGray = gray[80:190,180:800]
     cv2.imwrite(cropFileName,cropGray)
-    # os.system("rm -rf ./image")
+    os.system("rm -rf ./image")
     return cropGray
+
 
 def imageToString(image):
     text = pytesseract.image_to_string(image, lang='Hangul', config = '-l Hangul --oem 3 --psm 6')
     text = text.replace(" ", "")
     return text
     
+
+def findImages(imageUrlList):
+    urlDictionary = {}
+
+    for url in imageUrlList:
+        cropedImage = getCropedImage(url)
+        text = imageToString(cropedImage)
+        text = text.strip()
+        urlDictionary[text] = url
+        
+    return urlDictionary

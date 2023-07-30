@@ -94,10 +94,6 @@ def slackMessageDinnerFormat(dinnerImageUrl, nextLaunchImageUrl):
         },
     ]
     
-
-    
-
-
 def slackErrorMessageFormat(msg):
     today = dt.datetime.now()
     today = today.strftime("%y년 %m월 %d일")
@@ -112,22 +108,19 @@ def slackErrorMessageFormat(msg):
 		},
     ]
 
-def sendSlackLaunchMessageTEST(imageUrl) :
-    slackToken = os.getenv("TEST_TOKEN")
-    channel = os.getenv("TEST_CHANNEL")
+def sendSlackLaunchMessageTEST(image, slackToken, channel) :
+    client = slack_sdk.WebClient(token = slackToken)
+    client.chat_postMessage(channel = channel, blocks = slackMessageLaunchFormat(image))
+
+def sendSlackDinnerMessageTEST(imageUrl1, imageUrl2, slackToken, channel) :
+    client = slack_sdk.WebClient(token = slackToken)
+    client.chat_postMessage(channel = channel, blocks = slackMessageDinnerFormat(imageUrl1, imageUrl2))
+
+def sendSlackFridayMessageTEST(imageUrl, slackToken, channel) :
     client = slack_sdk.WebClient(token = slackToken)
     client.chat_postMessage(channel = channel, blocks = slackMessageLaunchFormat(imageUrl))
 
-
-def sendSlackDinnerMessageTEST(dinnerImageUrl, nextLaunchImageUrl) :
-    slackToken = os.getenv("TEST_TOKEN")
-    channel = os.getenv("TEST_CHANNEL")
-    client = slack_sdk.WebClient(token = slackToken)
-    client.chat_postMessage(channel = channel, blocks = slackMessageDinnerFormat(dinnerImageUrl, nextLaunchImageUrl))
-
-def sendSlackErrorMessageTEST(msg) :
-    slackToken = os.getenv("TEST_TOKEN")
-    channel = os.getenv("TEST_CHANNEL")
+def sendSlackErrorMessageTEST(msg, slackToken, channel) :
     client = slack_sdk.WebClient(token = slackToken)
     client.chat_postMessage(channel = channel, blocks = slackErrorMessageFormat(msg))
 
