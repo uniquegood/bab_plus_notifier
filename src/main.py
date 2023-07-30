@@ -34,7 +34,7 @@ if __name__ == "__main__":
     date1, date2 = getDate(sys.argv[1])
     
     load_dotenv(verbose=True)
-    slackToken = os.getenv("TEST_TOKEN")
-    channel = os.getenv("TEST_CHANNEL")
+    slackToken = os.getenv("SLACK_TOKEN")
+    channel = os.getenv("SLACK_CHANNEL")
     app.app(slackToken, channel, date1, date2)
    
