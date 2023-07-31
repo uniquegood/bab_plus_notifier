@@ -39,7 +39,7 @@ def app(slackToken, channel, date1, date2):
     if sys.argv[1] == '0':
         for key in keyList:
             if ("점심" in key and date1 in key):
-                foundImageUrls.append(imageUrlList[key])
+                foundImageUrls.append(imageMap[key])
         if (len(foundImageUrls) != 1):
             slack.sendSlackErrorMessageTEST("해당 날짜의 이미지를 찾지 못했습니다.", slackToken , channel)
         slack.sendSlackLaunchMessageTEST(foundImageUrls[0], slackToken, channel)
@@ -47,7 +47,7 @@ def app(slackToken, channel, date1, date2):
     elif sys.argv[1] == '1':
         for key in keyList:
             if ("저녁" in key and date1 in key and "점심" in key and date2 in key):
-                foundImageUrls.append(imageUrlList[key])
+                foundImageUrls.append(imageMap[key])
         if (len(foundImageUrls) != 2):
             slack.sendSlackErrorMessageTEST("해당 날짜의 이미지를 찾지 못했습니다.", slackToken , channel)
         slack.sendSlackDinnerMessageTEST(foundImageUrls[0], foundImageUrls[1], slackToken, channel)
@@ -55,7 +55,7 @@ def app(slackToken, channel, date1, date2):
     elif sys.argv[1] == '2':
         for key in keyList:
             if ("점심" in key and date1 in key):
-                foundImageUrls.append(imageUrlList[key])
+                foundImageUrls.append(imageMap[key])
         if (len(foundImageUrls) != 1):
             slack.sendSlackErrorMessageTEST("해당 날짜의 이미지를 찾지 못했습니다.", slackToken , channel)
         slack.sendSlackLaunchMessageTEST(foundImageUrls[0], slackToken, channel)
