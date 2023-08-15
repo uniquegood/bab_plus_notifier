@@ -3,6 +3,10 @@ from dotenv import load_dotenv
 import pytesseract
 import cv2 
 import datetime as dt
+import uuid
+import time
+import json
+import requests
 
 
 def getCropedImage(url):
@@ -27,9 +31,49 @@ def getCropedImage(url):
     return cropGray
 
 
+
 def imageToString(image):
     text = pytesseract.image_to_string(image, lang='Hangul', config = '-l Hangul --oem 3 --psm 6')
     text = text.replace(" ", "")
+    return text
+
+
+def getText(url):
+    api_url = os.getenv("NAVER_API_URL")
+    secret_key = os.getenv("NAVER_SECRET_KEY")
+    
+    request_json = {
+        'images': [
+            {
+                'format': 'jpeg',
+                'name': 'demo',
+                'url' : url
+            }
+        ],
+        'requestId': str(uuid.uuid4()),
+        'lang' : "ko",
+        'version': 'V2',
+        'timestamp': int(round(time.time() * 1000))
+    }
+    
+    headers = {
+    'X-OCR-SECRET': secret_key,
+    'Content-Type' : 'application/json'
+    }
+    
+    response = requests.request("POST", api_url, headers=headers, data = json.dumps(request_json).encode('UTF-8'))
+    
+    if response.status_code != 200 :
+        return "temp"
+    
+    text = ""
+    result = json.loads(response.text)
+    images = result['images']
+    fields = images[0]['fields']
+    for data in fields:
+        inferText = data['inferText']
+        inferText = inferText.replace(" " , "")
+        text += inferText
     return text
     
 
@@ -37,8 +81,9 @@ def findImages(imageUrlList):
     urlDictionary = {}
 
     for url in imageUrlList:
-        cropedImage = getCropedImage(url)
-        text = imageToString(cropedImage)
+        # cropedImage = getCropedImage(url)
+        # text = imageToString(cropedImage)
+        text = getText(url)
         text = text.strip()
         urlDictionary[text] = url
         
