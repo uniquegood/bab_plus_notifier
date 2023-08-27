@@ -55,7 +55,9 @@ def app(slackToken, channel, date1, date2):
         if (len(foundImageUrls) != 2):
             slack.sendSlackErrorMessageTEST("해당 날짜의 이미지를 찾지 못했습니다. - 2개의 이미지를 찾지 못함", slackToken , channel)
         
-        slack.sendSlackDinnerMessageTEST(foundImageUrls[0], foundImageUrls[1], slackToken, channel)
+        # slack.sendSlackDinnerMessageTEST(foundImageUrls[0], foundImageUrls[1], slackToken, channel)
+        
+        slack.sendSlackDinnerMessageTEST2(foundImageUrls[0], foundImageUrls[1], slackToken, channel)
 
     elif sys.argv[1] == '2':
         for key in keyList:

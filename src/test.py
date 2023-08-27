@@ -33,8 +33,8 @@ def getDate(argv) :
 if __name__ == "__main__":  
     date1, date2 = getDate(sys.argv[1])
     
-    date1 = "08월16일"
-    date2 = "08월16일"
+    date1 = "08월28일"
+    date2 = "08월28일"
     print("@@@@@@@@@@@@@")
     print(date1)
     print(date2)
