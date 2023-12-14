@@ -7,7 +7,7 @@ import slack
 
 def app(slackToken, channel, date1, date2):
      # 매개변수 확인
-    if len(sys.argv) != 2:
+    if  len(sys.argv) != 3:
         slack.sendSlackErrorMessage("매개변수 문제로 프로그램이 종료되었습니다.(Not found argument)", slackToken , channel)
         print("매개변수 하나 지정해서 넣으소")
         sys.exit()
