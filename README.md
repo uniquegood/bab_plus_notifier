@@ -68,7 +68,13 @@ free
 
 11. 아래 명령어로 프로그램 실행
 ```sh
-python3 src/main.py
+# 실제 슬랙으로 날라감
+python3 src/main.py 0 $Home # 점심
+python3 src/main.py 1 $Home # 저녁
+python3 src/main.py 2 $Home # 금요일 저녁
 # or
-python3 src/test.py
+# 테스트 슬랙으로 날라감
+python3 src/test.py 0 $Home # 점심
+python3 src/test.py 1 $Home # 저녁
+python3 src/test.py 2 $Home # 금요일 저녁
 ```
